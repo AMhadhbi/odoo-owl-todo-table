@@ -24,7 +24,7 @@ class Root extends Component {
   </div>
   
   <!-- Task Table -->
-  <table class="table table-bordered">
+  <table t-if="tasks.length" class="table table-bordered">
     <thead>
       <tr>
         <th scope="col">Task Name</th>
@@ -34,8 +34,8 @@ class Root extends Component {
     </thead>
     <tbody>
     <t t-foreach="tasks" t-as="task" t-key="task.id">
-      <Task task="task" onDelete.bind="deleteTask" onEdit.bind="editTask"/>
-      </t>
+        <Task task="task" onDelete.bind="deleteTask" onEdit.bind="editTask"/>
+    </t>
     </tbody>
   </table>
 </div>
