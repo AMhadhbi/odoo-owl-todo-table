@@ -1,4 +1,4 @@
-const { Component, mount, xml } = owl;
+const { Component, mount, xml, useState } = owl;
 
 // Owl Components
 class Root extends Component {
@@ -26,6 +26,7 @@ class Root extends Component {
       </tr>
     </thead>
     <tbody>
+    <t t-foreach="tasks" t-as="task" t-key="task.id">
       <tr>
         <td>
         <div class="form-check form-switch fs-5 name-dark">
@@ -43,11 +44,21 @@ class Root extends Component {
           <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
         </td>
       </tr>
+      </t>
     </tbody>
   </table>
 </div>
 
   `
+
+  setup(){
+    this.tasks = useState([
+      {id:1, name:"Task 1", color:"fff000", isCompleted: false},
+      {id:2, name:"Task 2", color:"fff000", isCompleted: false},
+      {id:3, name:"Task 3", color:"fff000", isCompleted: false},
+    ])
+  }
+
 }
 
 mount(Root, document.getElementById("root"))
