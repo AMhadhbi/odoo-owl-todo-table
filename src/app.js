@@ -34,7 +34,7 @@ class Root extends Component {
     </thead>
     <tbody>
     <t t-foreach="tasks" t-as="task" t-key="task.id">
-      <Task task="task"/>
+      <Task task="task" onDelete.bind="deleteTask"/>
       </t>
     </tbody>
   </table>
@@ -78,6 +78,11 @@ class Root extends Component {
   }
   
 
+  // delete task
+  deleteTask(task) {
+    const index = this.tasks.findIndex((t) => t.id === task.id);
+    this.tasks.splice(index, 1);
+}
 }
 
 mount(Root, document.getElementById("root"))

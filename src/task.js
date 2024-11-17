@@ -22,16 +22,21 @@ export class Task extends Component {
     </td>
     <td>
       <button class="btn btn-primary me-2"><i class="bi bi-pencil"></i></button>
-      <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
+      <button class="btn btn-danger" t-on-click="deleteTask"><i class="bi bi-trash"></i></button>
     </td>
   </tr>
 
     `
-    static props = ["task"];
+    static props = ["task", "onDelete"];
 
     // toggle task
     toggleTask() {
         this.props.task.isCompleted = !this.props.task.isCompleted;
+    }
+
+    // delete task
+    deleteTask() {
+        this.props.onDelete(this.props.task);
     }
 
 
