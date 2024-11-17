@@ -1,7 +1,9 @@
 const { Component, mount, xml, useState } = owl;
+import { Task } from "./task.js";
 
 // Owl Components
 class Root extends Component {
+  static components = { Task };
   static template = xml`
   
   <div class="m-0 p-4 bg-white rounded">
@@ -32,25 +34,7 @@ class Root extends Component {
     </thead>
     <tbody>
     <t t-foreach="tasks" t-as="task" t-key="task.id">
-      <tr t-attf-style="background-color:#{task.color}">
-        <td>
-        <div class="form-check form-switch fs-5 name-dark">
-          <input class="form-check-input" type="checkbox" value="" role="switch" 
-          id="flexCheckDefault"
-          t-att-id="task.id"/>
-          <label t-att-for="task.id">
-          <t t-esc="task.name"/>
-          </label>
-        </div>
-        </td>
-        <td>
-          <input type="color" class="form-control-color border-0" t-att-id="task.id" t-att-value="state.color"/>
-        </td>
-        <td>
-          <button class="btn btn-primary me-2"><i class="bi bi-pencil"></i></button>
-          <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
-        </td>
-      </tr>
+      <Task task="task"/>
       </t>
     </tbody>
   </table>
