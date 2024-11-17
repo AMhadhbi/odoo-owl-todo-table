@@ -27,12 +27,14 @@ class Root extends Component {
     </thead>
     <tbody>
     <t t-foreach="tasks" t-as="task" t-key="task.id">
-      <tr>
+      <tr t-attf-style="background-color:#{task.color}">
         <td>
         <div class="form-check form-switch fs-5 name-dark">
-          <input class="form-check-input" type="checkbox" value="" role="switch" id="flexCheckDefault"/>
-          <label for="flexCheckDefault">
-            Default Checkbox
+          <input class="form-check-input" type="checkbox" value="" role="switch" 
+          id="flexCheckDefault"
+          t-att-id="task.id"/>
+          <label t-att-for="task.id">
+          <t t-esc="task.name"/>
           </label>
         </div>
         </td>
